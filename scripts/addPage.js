@@ -72,7 +72,11 @@ export const addPage = async () => {
 
 // export function use${pageName}() {
 //     // hooks, states, refs, actions, effects
-//     return {};
+//     return {
+//         state: {},
+//         refs: {},
+//         actions: {},
+//     };
 // }
 `
   );
@@ -81,19 +85,18 @@ export const addPage = async () => {
   const indexFilePath = path.join(pageFilePath, "index.tsx");
   fs.writeFileSync(
     indexFilePath,
-    `import { memo } from "react";
-// import styles from './index.module.css'
+    `// import styles from './index.module.css';
 // import { use${pageName} } from './index.hooks';
 // import { ${firstLetterToSmallPageName}StringConstant } from './stringConstants';
 
-const ${pageName} = memo(() => {
+const ${pageName} = () => {
     // const { state, actions, vars } = use${pageName}();
     return (
         <div>
             <h1>${pageName} Page</h1>
         </div>
     );
-});
+};
 
 export default ${pageName};
 `
@@ -103,17 +106,16 @@ export default ${pageName};
   const routeFilePath = path.join(pageFilePath, "route.ts");
   fs.writeFileSync(
     routeFilePath,
-    `import { RouteObject } from "react-router-dom";
+    `import { createRoute } from "@tanstack/react-router";
+import { rootRoute } from "../../routes";
+import { lazy } from "react";
 
-export const ${firstLetterToSmallPageName}Route = (routeObject: RouteObject = {}): RouteObject => {
-    return {
-        ...routeObject,
-        path: "${pagePath}",
-        lazy: async () => ({
-            Component: (await import(".")).default
-        }),
-    };
-};`
+export const ${firstLetterToSmallPageName}Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "${pagePath}",
+  component: lazy(() => import(".")),
+});
+`
   );
 
   console.log(`✅ Page created successfully at: ${pageFilePath}`);
