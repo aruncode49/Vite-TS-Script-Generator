@@ -74,7 +74,7 @@ export const addPage = async () => {
 //     // hooks, states, refs, actions, effects
 //     return {
 //         state: {},
-//         refs: {},
+//         vars: {},
 //         actions: {},
 //     };
 // }

@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(185, 244, 244);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container > h3 {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    background-color: black;
+    color: white;
+    border-radius: 0.3rem;
+    padding: 1rem;
+}
+
+.users_container{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.users_data {
+    padding: 1rem;
+    background-color: rgb(25, 85, 85);
+    color: white;
+    border-radius: 0.3rem;
+}

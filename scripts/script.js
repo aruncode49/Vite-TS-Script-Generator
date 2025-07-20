@@ -2,7 +2,7 @@ import select from "@inquirer/select";
 import { addPage } from "./addPage.js";
 import { addInterface } from "./addInterface.js";
 import { addComponent } from "./addComponent.js";
-import { ExitPromptError } from "@inquirer/core"; // 👈 import this
+import { ExitPromptError } from "@inquirer/core";
 
 try {
   const answer = await select({
