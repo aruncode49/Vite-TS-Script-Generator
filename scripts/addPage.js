@@ -107,7 +107,7 @@ export default ${pageName};
   fs.writeFileSync(
     routeFilePath,
     `import { createRoute } from "@tanstack/react-router";
-import { rootRoute } from "../../routes";
+import { rootRoute } from "../../router";
 import { lazy } from "react";
 
 export const ${firstLetterToSmallPageName}Route = createRoute({

@@ -2,6 +2,9 @@ import { createRootRoute, createRouter, Outlet } from "@tanstack/react-router";
 import { homeRoute } from "./pages/home/route";
 import { usersRoute } from "./pages/users/route";
 
+// routes config
+const allRoutes = [homeRoute, usersRoute]
+
 // root route with a layout component that renders child routes via <Outlet />
 export const rootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -9,7 +12,7 @@ export const rootRoute = createRootRoute({
 });
 
 // create a route tree by adding child routes to the root route
-const routeTree = rootRoute.addChildren([homeRoute, usersRoute]);
+const routeTree = rootRoute.addChildren(allRoutes);
 
 // create and export the router instance using the route tree
 export const router = createRouter({ routeTree });
